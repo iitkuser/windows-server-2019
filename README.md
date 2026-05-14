@@ -37,18 +37,12 @@ PowerShell script to restart and reset Remote Desktop Services (Terminal Service
 
 ---
 
-## Step 2 — Enable Script Execution
+## Step 2 — Bypass PowerShell Execution Policy
 
 Run the following command:
 
 ```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-```
-
-If prompted, press:
-
-```text
-Y
+Set-ExecutionPolicy Bypass -Scope Process -Force
 ```
 
 ---
@@ -74,7 +68,7 @@ cd "C:\Scripts"
 # One-Line Quick Run
 
 ```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+Set-ExecutionPolicy Bypass -Scope Process -Force
 cd "C:\Scripts"
 .\reset-remote-desktop-terminal-services.ps1
 ```
@@ -114,7 +108,7 @@ running scripts is disabled on this system
 Fix:
 
 ```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+Set-ExecutionPolicy Bypass -Scope Process -Force
 ```
 
 ---
@@ -137,7 +131,7 @@ Open PowerShell:
 
 ```powershell
 cd reset-rdp-terminal-services
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+Set-ExecutionPolicy Bypass -Scope Process -Force
 .\reset-remote-desktop-terminal-services.ps1
 ```
 
