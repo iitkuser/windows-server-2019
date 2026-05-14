@@ -9,97 +9,148 @@ PowerShell script to restart and reset Remote Desktop Services (Terminal Service
 - Stops Remote Desktop related services
 - Restarts Terminal Services safely
 - Clears stuck RDP sessions
-- Helps fix:
-  - Black screen on RDP
-  - Frozen Remote Desktop sessions
-  - Disconnected session issues
-  - Terminal Services not responding
+- Fixes common RDP issues:
+  - Black screen
+  - Frozen session
+  - Stuck login
+  - Session disconnects
+  - Unresponsive Terminal Services
 
 ---
 
 ## Requirements
 
-- Windows Server / Windows 10 / Windows 11
+- Windows 10 / Windows 11 / Windows Server
 - Administrator privileges
-- PowerShell 5.1 or later
+- PowerShell 5.1+
 
 ---
 
-## File
+# Run the Script
 
+## Step 1 — Open PowerShell as Administrator
 
-reset-remote-desktop-terminal-services.ps1
-Run the Script
-Step 1 — Open PowerShell as Administrator
+- Press `Start`
+- Search for `PowerShell`
+- Right-click **Windows PowerShell**
+- Click **Run as Administrator**
 
-Start Menu → Search PowerShell → Right Click → Run as Administrator
+---
 
-Step 2 — Allow Script Execution (If Blocked)
+## Step 2 — Enable Script Execution
 
-Run:
+Run the following command:
 
-Set-ExecutionPolicy RemoteSigned -Scope Process
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
 
-Press:
+If prompted, press:
 
+```text
 Y
+```
 
-when prompted.
+---
 
-Step 3 — Run the Script
+## Step 3 — Navigate to Script Folder
 
-Navigate to the script folder:
+Example:
 
-cd "C:\Path\To\Script"
+```powershell
+cd "C:\Scripts"
+```
 
-Run:
+---
 
+## Step 4 — Run the Script
+
+```powershell
 .\reset-remote-desktop-terminal-services.ps1
-Example
+```
+
+---
+
+# One-Line Quick Run
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+cd "C:\Scripts"
+.\reset-remote-desktop-terminal-services.ps1
+```
+
+---
+
+## Example
+
+```powershell
 PS C:\Scripts> .\reset-remote-desktop-terminal-services.ps1
-Common Fixes
-Problem	Fixed
-RDP black screen	✅
-Session disconnected	✅
-RDP stuck on loading	✅
-Terminal Services frozen	✅
-Multiple ghost sessions	✅
-Important Notes
-Running this script may disconnect active RDP users.
-Always test in a non-production environment first.
-Administrator access is required.
-Troubleshooting
-PowerShell script execution disabled
+```
+
+---
+
+## Common Issues Fixed
+
+| Issue | Status |
+|---|---|
+| RDP black screen | ✅ |
+| Frozen Remote Desktop | ✅ |
+| Stuck login screen | ✅ |
+| Session disconnects | ✅ |
+| Terminal Services hanging | ✅ |
+
+---
+
+## Troubleshooting
+
+### Script Execution Disabled
 
 Error:
 
+```text
 running scripts is disabled on this system
+```
 
 Fix:
 
-Set-ExecutionPolicy RemoteSigned -Scope Process
-Access Denied
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
 
-Make sure PowerShell is opened as:
+---
 
-Run as Administrator
-GitHub Usage
+### Access Denied
+
+Run PowerShell as Administrator.
+
+---
+
+## GitHub Usage
 
 Clone repository:
 
+```bash
 git clone https://github.com/yourusername/reset-rdp-terminal-services.git
+```
 
-Enter folder:
+Open PowerShell:
 
+```powershell
 cd reset-rdp-terminal-services
-
-Run script:
-
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 .\reset-remote-desktop-terminal-services.ps1
-License
+```
+
+---
+
+## Warning
+
+Running this script may disconnect active RDP users.
+
+Use carefully on production servers.
+
+---
+
+## License
 
 MIT License
-
-Author
-
-Created for Windows Remote Desktop troubleshooting and automation.
